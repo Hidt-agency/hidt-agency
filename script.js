@@ -86,10 +86,14 @@ updatePath();
 
 // navigation
 
+
 document.addEventListener("DOMContentLoaded", function (){
     const menu = document.querySelector(".menu");
     const toggleButton = document.querySelector(".toggle");
     let isOpen = false;
+    const navElements = document.querySelectorAll(".link");
+    const themeIcon = document.querySelector(".theme");
+    const langs = document.querySelector(".langs");
 
     const timeline = gsap.timeline({ paused: true });
 
@@ -97,7 +101,6 @@ document.addEventListener("DOMContentLoaded", function (){
         duration: 0.3,
         opacity: 1,
     });
-
 
     timeline.to(menu, {
         duration: 1,
@@ -107,12 +110,31 @@ document.addEventListener("DOMContentLoaded", function (){
         "-=0.3"
     );
 
+    timeline.to(themeIcon, {
+        duration: 0.1,
+        ease: "power4.inOut",
+        opacity: "0",
+    });
+
+    timeline.to(langs, {
+        duration: 0.1,
+        ease: "power3.inOut",
+        display: "none",
+    });
+
     timeline.to(menu, {
         duration: 1,
         ease: "power3.inOut",
         clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
         pointerEvents: "all",
     });
+
+    timeline.to(themeIcon, {
+        duration: 0.1,
+        ease: "power3.inOut",
+        display: "none",
+    });
+
 
     timeline.to(".divider", {
         duration: 1,
@@ -125,11 +147,26 @@ document.addEventListener("DOMContentLoaded", function (){
     toggleButton.addEventListener("click", function (){
         if(isOpen){
             timeline.reverse();
+            toggleButton.classList.remove("white-bg")
+
         } else {
             timeline.play();
+            toggleButton.classList.add("white-bg")
         }
         isOpen = !isOpen;
     });
+
+    navElements.forEach((element) => {
+        element.addEventListener("click", function () {
+            if(isOpen){
+                timeline.reverse();
+            } else {
+                timeline.play();
+
+            }
+            isOpen = !isOpen;
+        })
+    })
 })
 
 // letters
@@ -213,3 +250,26 @@ document.addEventListener('click', (e) => {
         handleLeftClick();
     }
 });
+
+
+// theme
+
+const themeIcon = document.querySelector(".theme");
+const footerImg = document.querySelector(".footer-image");
+const footerInnerImg = document.querySelector(".footer-inner-image");
+const navImg = document.querySelector(".col-image");
+
+themeIcon.onclick = function (){
+    document.body.classList.toggle("dark-theme");
+    if(document.body.classList.contains("dark-theme")){
+        themeIcon.classList.add("white-bg")
+        footerImg.classList.add("dark")
+        footerInnerImg.classList.add("dark")
+        navImg.classList.add("dark")
+    } else {
+        themeIcon.classList.remove("white-bg")
+        footerImg.classList.remove("dark")
+        footerInnerImg.classList.remove("dark")
+        navImg.classList.remove("dark")
+    }
+}

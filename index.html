@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>HIDT - Hyper-Immersive Digital Transcendence</title>
+    <title>HIDT - Ukraine based Digital Agency</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -62,12 +62,12 @@
 
         <div class="topbar">
             <ul class="langs">
-                <li>UA</li>
-                <li>EN</li>
-                <li>FR</li>
+                <li><a href="#" language="ukrainian">UA</a></li>
+                <li><a href="#" language="ukrainian">EN</a></li>
+                <li><a href="#" language="ukrainian">FR</a></li>
             </ul>
 
-            <div class="toggle"><button>menu</button></div>
+            <div><button class="toggle">menu</button></div>
 
         </div>
         <div class="nav-container">
@@ -78,12 +78,10 @@
                     <div class="about item">
                         <div class="col-1"><p>// &nbsp;&nbsp; about</p></div>
                         <div class="col-2">
-                            <div class="link"><a href="#">HISTORY</a></div>
-                            <div class="link"><a href="#">PRIORITIES</a></div>
-                            <div class="link"><a href="#">TEAM</a></div>
-                            <div class="link"><a href="#">JOB</a></div>
-                            <div class="link"><a href="#">GALLERY</a></div>
-                            <div class="link"><a href="#">FAQ</a></div>
+                            <div class="link"><a href="#letters">HISTORY</a></div>
+                            <div class="link"><a href="#projects">GALLERY</a></div>
+                            <div class="link"><a href="#team">TEAM</a></div>
+                            <div class="link"><a href="#footer">FAQ</a></div>
                         </div>
                     </div>
                     <div class="connect item">
@@ -116,7 +114,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col">
+                <div class="col col-image">
+
                 </div>
 
                 <div class="divider"></div>
@@ -125,7 +124,7 @@
 
         <div class="footer">
             <button class="theme">Theme</button>
-            <p>Immersive web experiences
+            <p class="made-in">Immersive web experiences
             <br>Made in Ukraine</p>
             <p>HIDT 2024</p>
         </div>
@@ -261,6 +260,42 @@
             </div>
         </div>
     </section>
+    <footer id="footer">
+        <div class="footer-wrapper">
+            <div class="footer-image">
+                <div class="footer-inner-image"></div>
+<!--                <img src="images/footer.jpg" alt="img">-->
+<!--                <img src="images/footer.jpg" alt="img" class="footer-img-min">-->
+            </div>
+            <div class="footer-info">
+                <div class="footer-caption">
+                    // dont forget to check our socials @hidt
+                </div>
+
+                <form>
+                    <label for="email" class="input-label">
+                        Subscribe to our newsletter
+                    </label>
+                    <input id="email" type="email" placeholder="Enter your email" required>
+                    <button type="submit" class="submit-button">Submit</button>
+                </form>
+
+                <div class="footer-caption">
+                    Take a look at our news Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores commodi consequatur cum cumque dolore, ea, eligendi et explicabo id magnam maxime quam qui repellendus saepe similique sunt tenetur unde veniam.
+                </div>
+
+                <div class="footer-ending">
+                    // work with the best
+                </div>
+
+            </div>
+            <a href="#" class="to-top">
+                <img src="images/arrow.svg" alt="arrow">
+            </a>
+        </div>
+
+
+    </footer>
 </body>
 <script src="script.js"></script>
 <script type="module" src="projects.js"></script>
