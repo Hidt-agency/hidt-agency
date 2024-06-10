@@ -27,6 +27,10 @@ html, body{
     color: var(--secondary-color);
 }
 
+#team {
+    max-width: 100%;
+}
+
 .trail{
     @media (max-width: 768px) {
         display: none;
