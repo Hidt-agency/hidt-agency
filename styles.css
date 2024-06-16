@@ -17,6 +17,13 @@
 html{
     font-size: calc(100vw / 1920 * 10);
     scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+}
+
+html > div{
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    background-color: var(--primary-color);
 }
 
 html, body{
@@ -26,6 +33,37 @@ html, body{
     position: relative;
     color: var(--secondary-color);
 }
+
+/*.total-wrapper{*/
+/*    overflow-y: auto;*/
+/*    scroll-snap-type: y mandatory;*/
+/*    width: 100vw;*/
+/*    height: 100vh;*/
+/*}*/
+
+.container{
+    scroll-snap-align: start;
+}
+.letters{
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    background-color: var(--primary-color);
+}
+.projects{
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    background-color: var(--primary-color);
+}
+.team{
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+}
+footer{
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+}
+
+
 
 .trail{
     @media (max-width: 768px) {
@@ -740,7 +778,7 @@ h2{
 
 .team{
     position: relative;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     overflow: hidden;
     border-top: 1px solid #cccccc;
@@ -748,6 +786,137 @@ h2{
 
     @media (max-width: 1680px) {
         padding: 100px 0;
+    }
+}
+
+.tap{
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: -50px;
+    right: -70px;
+    z-index: 99999999999;
+
+    @media (max-width: 425px){
+        width: 50px;
+        height: 50px;
+        top: -40px;
+        right: -40px;
+
+        animation: none;
+    }
+}
+
+.tap-circle{
+    width: 60px;
+    height: 60px;
+    border: 1px solid var(--secondary-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    animation: tap 4s ease-in-out infinite;
+
+    @media (max-width: 425px){
+        width: 50px;
+        height: 50px;
+        border-width: 0.5px;
+
+        animation: tap-mobile 4s ease-in-out infinite;
+    }
+}
+
+.tap-circle p{
+    font-size: 12px;
+    transform: rotate(-25deg);
+}
+
+.tap-mini-circle{
+    width: 57px;
+    height: 57px;
+    border-radius: 50%;
+    border: 1px solid var(--secondary-color);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    animation: tap2 4s ease-in-out infinite;
+
+    @media (max-width: 425px){
+        width: 44px;
+        height: 44px;
+        border-width: 0.5px;
+
+        animation: tap2-mobile 4s ease-in-out infinite;
+    }
+}
+
+@keyframes tap {
+    0%{
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    50%{
+        opacity: 0;
+        transform: scale(1);
+    }
+    100%{
+        opacity: 1;
+        transform: scale(1.05);
+    }
+}
+
+@keyframes tap2 {
+    0%{
+        opacity: 1;
+        width: 57px;
+        height: 57px;
+    }
+    50%{
+        opacity: 0;
+        width: 60px;
+        height: 60px;
+    }
+    100%{
+        opacity: 1;
+        width: 57px;
+        height: 57px;
+    }
+}
+
+@keyframes tap-mobile {
+    0%{
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    50%{
+        opacity: 0;
+        transform: scale(1);
+    }
+    100%{
+        opacity: 1;
+        transform: scale(1.05);
+    }
+}
+
+@keyframes tap2-mobile {
+    0%{
+        opacity: 1;
+        width: 44px;
+        height: 44px;
+    }
+    50%{
+        opacity: 0;
+        width: 46px;
+        height: 46px;
+    }
+    100%{
+        opacity: 1;
+        width: 44px;
+        height: 44px;
     }
 }
 
@@ -878,10 +1047,11 @@ img{
     background: var(--primary-color);
 }
 .t-2{
-    background: #8a0f0f;
+    background: #d37d02;
 }
 .t-3{
-    background: var(--primary-color);
+
+    background: #8a0f0f;
 }
 .t-4{
     background: #8e908a;
@@ -901,11 +1071,10 @@ footer{
     position: relative;
     clip-path: polygon(0% 0, 100% 0%, 100% 100%, 0 100%);
     color: var(--primary-color);
-    border-top: 1px solid black;
+    border-top: 1px solid #d9d9d9;
 }
 
 .footer-wrapper{
-    position: fixed;
     height: 100vh;
     width: 100%;
     bottom: 0;

@@ -44,6 +44,8 @@ gsap.to(".clip-top .marquee, .clip-bottom .marquee, .clip-center .marquee span",
 
 //mouse trail
 
+const hero = document.querySelector(".container");
+
 const trails = document.querySelectorAll(".trail");
 const smoothPointer = {
     x: window.innerWidth / 2,
@@ -52,7 +54,7 @@ const smoothPointer = {
 const totalPointsArray = [40, 35, 30, 25, 20, 15, 10];
 
 
-window.addEventListener("mousemove", (event) => {
+hero.addEventListener("mousemove", (event) => {
     gsap.to(smoothPointer, {
         x: event.clientX,
         y: event.clientY,
@@ -201,13 +203,14 @@ init();
 // team
 const team = [
     { name: "Andrii Huzenko", role: "Founder" },
+    { name: "Kirill Nesterenko", role: "CTO" },
     { name: "Bogdan Gilevych", role: "Frontend Developer" },
     { name: "Mykola Krasovskyi", role: "Backend Developer" },
-    { name: "Kirill Nesterenko", role: "CTO" },
+    { name: "Yaroslav Koval", role: "Designer" },
 ];
 
 let currentSlide = 1;
-const totalSlides = 4;
+const totalSlides = team.length;
 
 const updateInfo = (slideNumber) => {
     const member = team[slideNumber - 1];
@@ -242,7 +245,9 @@ const handleLeftClick = () => {
     }
 }
 
-document.addEventListener('click', (e) => {
+const sectionTeam = document.querySelector(".team");
+
+sectionTeam.addEventListener('click', (e) => {
     const halfPageWidth = window.innerWidth / 2;
     if(e.clientX > halfPageWidth) {
         handleRightClick();
@@ -273,3 +278,13 @@ themeIcon.onclick = function (){
         navImg.classList.remove("dark")
     }
 }
+
+// toTop button
+
+const toTopBtn = document.querySelector(".to-top");
+
+toTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0
+    })
+})
