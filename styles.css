@@ -34,13 +34,6 @@ html, body{
     color: var(--secondary-color);
 }
 
-/*.total-wrapper{*/
-/*    overflow-y: auto;*/
-/*    scroll-snap-type: y mandatory;*/
-/*    width: 100vw;*/
-/*    height: 100vh;*/
-/*}*/
-
 .container{
     scroll-snap-align: start;
 }
