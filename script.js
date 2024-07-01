@@ -44,24 +44,50 @@ gsap.to(".clip-top .marquee, .clip-bottom .marquee, .clip-center .marquee span",
 
 //mouse trail
 
-const hero = document.querySelector(".container");
-
 const trails = document.querySelectorAll(".trail");
 const smoothPointer = {
-    x: window.innerWidth / 2,
-    y: window.innerHeight / 2,
+    x: document.innerWidth / 2,
+    y: document.innerHeight / 2,
 };
 const totalPointsArray = [40, 35, 30, 25, 20, 15, 10];
 
+let xMousePos = 0;
+let yMousePos = 0;
+let lastX = null;
+let lastY = null;
+let hasMouseMoved = false;
 
-hero.addEventListener("mousemove", (event) => {
-    gsap.to(smoothPointer, {
-        x: event.clientX,
-        y: event.clientY,
-        duration: 0.5,
-        ease: "power2.out",
-    });
+document.addEventListener("mousemove", (event) => {
+    if (!hasMouseMoved) {
+        lastX = event.pageX;
+        lastY = event.pageY;
+        hasMouseMoved = true;
+    } else {
+        xMousePos = event.pageX;
+        yMousePos = event.pageY;
+        gsap.to(smoothPointer, {
+            x: event.pageX,
+            y: event.pageY,
+            duration: 0.5,
+            ease: "power2.out",
+        });
+
+    }
+
 });
+
+// window.addEventListener("scroll", function () {
+//     const xScrollDelta = window.scrollX - lastScrolledLeft;
+//     const yScrollDelta = window.scrollY - lastScrolledTop;
+//
+//     if(xScrollDelta !== 0 || yScrollDelta !== 0){
+//         xMousePos += xScrollDelta;
+//         yMousePos += yScrollDelta;
+//     }
+//
+//     lastScrolledLeft = window.scrollY;
+//     lastScrolledTop = window.scrollX;
+// })
 
 function updatePath() {
     trails.forEach((path, index) => {
@@ -173,32 +199,32 @@ document.addEventListener("DOMContentLoaded", function (){
 
 // letters
 
-const letters = document.querySelector('.letters'),
-    lettersContainer = letters.querySelector('.section_container'),
-    lettersCol = letters.querySelectorAll('.section_col'),
-    lettersCaptions = letters.querySelectorAll('.section_col_caption');
-
-const isDesktop = window.matchMedia('(min-width: 768px)');
-
-const init = () => {
-    if(isDesktop.matches) addEventListeners();
-};
-
-const addEventListeners = () => {
-    lettersCol[0].classList.add('active');
-
-    lettersCol.forEach((col, index) => {
-        col.addEventListener('mouseenter', () => {
-            lettersCol.forEach((el) => el.classList.remove('active'));
-
-            col.classList.add('active');
-
-            if(index === col.length - 1) col.classList.add('active');
-        })
-    })
-}
-
-init();
+// const letters = document.querySelector('.letters'),
+//     lettersContainer = letters.querySelector('.section_container');
+//     lettersCol = letters.querySelectorAll('.section_col');
+//     lettersCaptions = letters.querySelectorAll('.section_col_caption');
+//
+// const isDesktop = window.matchMedia('(min-width: 768px)');
+//
+// const init = () => {
+//     if(isDesktop.matches) addEventListeners();
+// };
+//
+// const addEventListeners = () => {
+//     lettersCol[0].classList.add('active');
+//
+//     lettersCol.forEach((col, index) => {
+//         col.addEventListener('mouseenter', () => {
+//             lettersCol.forEach((el) => el.classList.remove('active'));
+//
+//             col.classList.add('active');
+//
+//             if(index === col.length - 1) col.classList.add('active');
+//         })
+//     })
+// }
+//
+// init();
 
 // team
 const team = [
@@ -271,20 +297,24 @@ themeIcon.onclick = function (){
         footerImg.classList.add("dark")
         footerInnerImg.classList.add("dark")
         navImg.classList.add("dark")
+
+        console.log('hui')
     } else {
         themeIcon.classList.remove("white-bg")
         footerImg.classList.remove("dark")
         footerInnerImg.classList.remove("dark")
         navImg.classList.remove("dark")
+
+        console.log('hui')
     }
 }
 
 // toTop button
 
-const toTopBtn = document.querySelector(".to-top");
-
-toTopBtn.addEventListener('click', () => {
-    window.scrollTo({
-        top: 0
-    })
-})
+// const toTopBtn = document.querySelector(".to-top");
+//
+// // toTopBtn.addEventListener('click', () => {
+// //     window.scrollTo({
+// //         top: 0
+// //     })
+// // })
